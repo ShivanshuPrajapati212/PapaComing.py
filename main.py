@@ -14,7 +14,9 @@ ORDER BY last_visit_date DESC
 
 cursor.execute(query)
 
-for row in cursor.fetchall():
+history = cursor.fetchall()
+
+for row in history:
     print(row)
 
 cursor.execute("DELETE FROM moz_historyvisits;")
@@ -22,6 +24,6 @@ cursor.execute("DELETE FROM moz_places;")
 
 conn.commit()
 
-print(f"Nuked {len(cursor.fetchall())} evidence")
+print(f"Nuked {len(history)} evidence")
 
 conn.close()
